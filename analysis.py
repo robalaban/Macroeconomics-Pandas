@@ -19,6 +19,8 @@ def func(append, callback_func):
     return intermList
 
 
+# Playing with anonymous function
+
 def nominal_gdp():
     return func(100, lambda x: (data.GDPI[x] / data.GDPI[0]))
 
@@ -27,6 +29,8 @@ def nominal_gdp():
 
 def gdp_deflator():
     return func(100, lambda x: (data.NOMINALGDP[x] / data.REALGDP[x])*100)
+
+# Stopping to fool around, back to things that make sense
 
 
 # The relation between Current and Previous GDPi
