@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 import pandas
 
 # Importing Initial data
@@ -43,7 +44,7 @@ def rel_gdpi():
 def rel_realgdp():
     intermList = []
 
-    intermList.append((100))
+    intermList.append((1))
     for x in xrange(1, len(data)):
         intermList.append((data.REALGDP[x] / data.REALGDP[x-1]))
 
@@ -54,7 +55,7 @@ def rel_realgdp():
 def gdp_deflatorprev():
     intermList = []
 
-    intermList.append((100))
+    intermList.append((1))
     for x in xrange(1, len(data)):
         intermList.append((data.RELATIONGDPI[x] / data.RELATIONREALGDP[x]))
 
@@ -115,4 +116,16 @@ data['INFLATIONRATEPREV'] = inflation_rataprev()
 data['REALGDPBASE'] = realgdp_base()
 data['REALGDPPREV'] = realgdp_prev()
 
-print(data)
+# Saving to data-complete.csv
+
+data.to_csv('data-complete.csv', sep=',', encoding='utf-8')
+
+# Plotting GDP / YEAR
+
+x,y = [],[]
+x.append(data.RELATIONGDPI)
+y.append(data.YEARS)
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(y, x,'o-')
+plt.show()
