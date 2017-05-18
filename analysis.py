@@ -1,4 +1,4 @@
-from matplotlib.backends.backend_pdf import PdfPages
+# from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib import pyplot as plt
 import pandas
 
@@ -7,6 +7,7 @@ import pandas
 data = pandas.read_csv('data.csv')
 
 # Function to calculate nominal GDP
+
 
 def func(append, callback_func):
     intermList = []
@@ -18,13 +19,13 @@ def func(append, callback_func):
     return intermList
 
 
-
 def nominal_gdp():
     return func(100, lambda x: (data.GDPI[x] / data.GDPI[0]))
 
 # The relation between Nominal and Real GDP
 
-def gdp_deflator(): 
+
+def gdp_deflator():
     return func(100, lambda x: (data.NOMINALGDP[x] / data.REALGDP[x])*100)
 
 
@@ -41,6 +42,7 @@ def rel_gdpi():
 
 # The relation between Current and Previous Real GDP
 
+
 def rel_realgdp():
     intermList = []
 
@@ -52,6 +54,7 @@ def rel_realgdp():
 
 # GDP Deflator related to previous year
 
+
 def gdp_deflatorprev():
     intermList = []
 
@@ -62,6 +65,7 @@ def gdp_deflatorprev():
     return intermList
 
 # Inflation Rate related to specific year
+
 
 def inflation_ratabase():
     intermList = []
@@ -86,6 +90,7 @@ def inflation_rataprev():
 
 # Real gdp related to base year
 
+
 def realgdp_base():
     intermList = []
 
@@ -96,6 +101,7 @@ def realgdp_base():
     return intermList
 
 # Real gdp relate to previous year
+
 
 def realgdp_prev():
     intermList = []
@@ -122,6 +128,7 @@ data['REALGDPPREV'] = realgdp_prev()
 data.to_csv('data-complete.csv', sep=',', encoding='utf-8')
 
 # Plotting GDP / YEAR
+
 
 def plt_relation(X, Y):
     plt.scatter(X, Y)
